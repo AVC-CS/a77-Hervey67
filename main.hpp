@@ -22,11 +22,10 @@ void findMaxSum(int result[], int num[][NUM_COLS], int rows, int cols)
         int total = 0;
         for( int j = 0; j < cols; j++){
             total += num[i][j];
-            if ((i == 0) || (maxsum < total)){
-                maxsum = total; 
-                maxrow = i;
-                
-            }
+        }
+        if ((i == 0) || (maxsum < total)){
+            maxsum = total; 
+            maxrow = i;               
         }
         for(int j = 0; j < cols; j++){
             result[j] = num[maxrow][j];
@@ -38,13 +37,13 @@ void findMaxSum(int result[], int num[][NUM_COLS], int rows, int cols)
 void findMaxElm(int result[], int num[][NUM_COLS], int rows, int cols)
 {
     // TODO: for each row, store the maximum element of that row in result[i].
-    int maxelm, currval;
     for(int i = 0; i < rows; i++){
-        maxelm = num[i][0];
+        int maxelm = num[i][0];
         for(int j = 1; j < cols; j++){
-            maxelm = num[i][j];
-            result[i] = maxelm;
+            if (num[i][j] > maxelm)
+                maxelm = num[i][j];
         }
+        result[i] = maxelm; 
     }
 }
 
