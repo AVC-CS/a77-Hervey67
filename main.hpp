@@ -5,6 +5,7 @@
 #include <iomanip>
 using namespace std;
 
+int maxsum, maxrow;
 const int SIZE = 10;
 const int NUM_ROWS = 6;
 const int NUM_COLS = 5;
@@ -16,6 +17,22 @@ void findMaxVal(int[], int[][NUM_COLS], int, int);
 void findMaxSum(int result[], int num[][NUM_COLS], int rows, int cols)
 {
     // TODO: find the row whose sum is the largest, copy that row into result.
+    int maxrow = 0; maxsum = 0; 
+    for (int i = 0; i < rows; i++){
+        int total = 0;
+        for( int j = 0; j < cols; j++){
+            total += num[i][j];
+            if ((i == 0) || (maxsum < total)){
+                maxsum = total; 
+                maxrow = i;
+                
+            }
+        }
+        for(int j = 0; j < cols; j++){
+            result[j] = num[maxrow][j];
+        }
+    }
+    
 }
 
 void findMaxElm(int result[], int num[][NUM_COLS], int rows, int cols)
