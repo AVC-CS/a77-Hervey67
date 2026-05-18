@@ -51,6 +51,20 @@ void findMaxElm(int result[], int num[][NUM_COLS], int rows, int cols)
 void findMaxVal(int result[], int num[][NUM_COLS], int rows, int cols)
 {
     // TODO: find the cell (r,c) holding the global maximum value; copy row r.
+    int maxval, maxrow;
+    maxval = num[0][0];
+    maxrow = 0;
+    for(int i = 0; i < rows; i++){
+        for(int j = 0; j < cols; j++){
+            if(maxval < num[i][j]){
+                maxval = num[i][j];
+                maxrow = i;
+            }
+        }
+    }
+    for(int j = 0; j < cols; j++){
+        result[j] = num[maxrow][j];
+    }
 }
 
 #endif
